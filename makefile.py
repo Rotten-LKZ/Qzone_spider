@@ -34,7 +34,7 @@ class MakeST:
         """
         path = "{}/{}/{}".format(self.getQQ, path, name)
         if file_type == "txt":
-            with open(path, 'a') as f:
+            with open(path, 'w', encoding='utf-8') as f:
                 f.write(content)
             f.close()
         elif file_type == "jpg":

@@ -47,7 +47,3 @@ def getGTK(cookie):
         # print(rv2)
         # print(getOldGTK(skey))
     return getNewGTK(p_skey, skey, rv2)
-
-
-if __name__ == "__main__":
-    pass

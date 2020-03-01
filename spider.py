@@ -78,3 +78,31 @@ class SpiderCover:
     def get_cover(self, url):
         result = requests.get(url, headers=self.header)
         return result.content
+
+
+def get_time(ts):
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(ts))
+
+
+if __name__ == "__main__":
+    getQQ = 0
+    s = SpiderList(getQQ, 2,
+                    '')
+    res = s.get_album_list()
+    print(res)
+    # print(type(res))
+    mst = makefile.MakeST(getQQ)
+    sc = SpiderCover()
+
+    for name, pre, ctime, lutime, mdtime in zip(res['name'], res['pre'], res['createtime'], res['lastuploadtime'], res['modifytime']):
+        # print(i)
+        # print(e)
+        mst.make_dir(name)
+        mst.make_dir("{}/AlbumInfo".format(name))
+        mst.make_file("{}/AlbumInfo".format(name), "Cover.jpg", "jpg", sc.get_cover(pre))
+        mst.make_file("{}/AlbumInfo".format(name), "Info.txt", "txt",
+                      "相册名字：{}\n"
+                      "相册创建时间：{}\n"
+                      "相册最后上传时间：{}\n"
+                      "相册修改时间：{}\n"
+                      "相册封面图片地址：{}".format(name, get_time(ctime), get_time(lutime), get_time(mdtime), pre))
