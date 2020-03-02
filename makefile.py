@@ -4,7 +4,6 @@ import os
 
 class MakeST:
     getQQ = ""
-    mainSUS = False
 
     def __init__(self, gqq):
         """
@@ -37,10 +36,12 @@ class MakeST:
             with open(path, 'w', encoding='utf-8') as f:
                 f.write(content)
             f.close()
+            self.output(3, path)
         elif file_type == "jpg":
             with open(path, 'wb') as f:
                 f.write(content)
             f.close()
+            self.output(3, path)
         # print(path)
 
     def make_main_dir(self):
