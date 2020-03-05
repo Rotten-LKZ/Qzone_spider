@@ -37,12 +37,18 @@ class MakeST:
                 f.write(content)
             f.close()
             self.output(3, path)
-        elif file_type == "jpg":
+        elif file_type == "jpg" or file_type == "mp4":
             with open(path, 'wb') as f:
                 f.write(content)
             f.close()
             self.output(3, path)
         # print(path)
+
+    def make_txt_a(self, path, name, content):
+        path = "{}/{}/{}".format(self.getQQ, path, name)
+        with open(path, 'a', encoding='utf-8') as f:
+            f.write(content)
+        f.close()
 
     def make_main_dir(self):
         if os.path.isdir(self.getQQ):
@@ -68,7 +74,3 @@ class MakeST:
         elif sus == 3:
             print("文件", ex, "已创建")
 
-
-if __name__ == "__main__":
-    m = MakeST(24859235)
-    m.make_file("TMD", "img.png", "png")
