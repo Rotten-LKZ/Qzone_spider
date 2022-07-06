@@ -1,3 +1,7 @@
+## Archived
+
+This project is no longer maintained
+
 # Qzone_spider
 
 QQ空间相册爬虫
